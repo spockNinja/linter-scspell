@@ -3,7 +3,7 @@ linterPath = atom.packages.getLoadedPackage("linter").path
 Linter = require "#{linterPath}/lib/linter"
 
 class LinterSCSpell extends Linter
-  @syntax: ['source.python', 'source.javascript']
+  @syntax: /.*/
 
   cmd: 'scspell --report-only'
 
