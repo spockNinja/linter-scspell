@@ -30,7 +30,7 @@ class LinterSCSpell extends Linter
 
   updateCommand: ->
     cmd = 'scspell'
-    overrrideDictionary = atom.config.get 'linter-scspell.overrideDictionary'
+    overrideDictionary = atom.config.get 'linter-scspell.overrideDictionary'
 
     if overrideDictionary
       cmd += " --override-dictionary=#{overrideDictionary}"
