@@ -5,7 +5,7 @@ Linter = require "#{linterPath}/lib/linter"
 class LinterSCSpell extends Linter
   @syntax: ['source.python', 'source.javascript']
 
-  cmd: 'scspell'
+  cmd: 'scspell --report-only'
 
   executablePath: null
 
@@ -29,7 +29,7 @@ class LinterSCSpell extends Linter
     atom.config.unobserve 'linter-scspell.executableDir'
 
   updateCommand: ->
-    cmd = 'scspell'
+    cmd = 'scspell --report-only'
     overrideDictionary = atom.config.get 'linter-scspell.overrideDictionary'
 
     if overrideDictionary
