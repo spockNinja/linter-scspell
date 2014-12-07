@@ -13,7 +13,7 @@ class LinterSCSpell extends Linter
 
   # A regex pattern used to extract information from the executable's output.
   regex:
-    '(.*?):(?<line>\\d+):(?<col>\\d+): (?<message>\\.*?)\r?\n'
+    '(.*?):(?<line>\\d+):(?<warning> )(?<message>.*?)\r?\n'
 
   constructor: (editor)->
     super(editor)
