@@ -5,7 +5,7 @@ Linter = require "#{linterPath}/lib/linter"
 class LinterSCSpell extends Linter
   @syntax: /.*/
 
-  cmd: 'scspell --report-only'
+  cmd: ['scspell',  '--report-only']
 
   executablePath: null
 
@@ -18,22 +18,27 @@ class LinterSCSpell extends Linter
   constructor: (editor)->
     super(editor)
 
-    atom.config.observe 'linter-scspell.executableDir', =>
-      @executablePath = atom.config.get 'linter-scspell.executableDir'
+    @executableDirListener = atom.config.observe 'linter-scspell.executableDir', =>
+      executableDir = atom.config.get 'linter-scspell.executableDir'
 
-    atom.config.observe 'linter-scspell.overrideDictionary', =>
+      if executableDir
+        @executablePath = if executableDir.length > 0 then executableDir else null
+
+    @overrideDictionaryListener = atom.config.observe 'linter-scspell.overrideDictionary', =>
       @updateCommand()
 
   destroy: ->
-    atom.config.unobserve 'linter-scspell.overrideDictionary'
-    atom.config.unobserve 'linter-scspell.executableDir'
+    @executableDirListener.dispose()
+    @overrideDictionaryListener.dispose()
 
   updateCommand: ->
-    cmd = 'scspell --report-only'
-    overrideDictionary = atom.config.get 'linter-scspell.overrideDictionary'
+    cmd = ['scspell', '--report-only']
 
-    if overrideDictionary
-      cmd += " --override-dictionary=#{overrideDictionary}"
+    dictOverride = atom.config.get 'linter-scspell.overrideDictionary'
+
+    if dictOverride
+      cmd.push "--override-dictionary=#{dictOverride}"
 
     @cmd = cmd
+
 module.exports = LinterSCSpell

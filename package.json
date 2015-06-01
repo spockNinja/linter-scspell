@@ -4,7 +4,6 @@
   "main": "./lib/init",
   "version": "1.1.1",
   "description": "Atom linter plugin for spell checking, using scspell",
-  "activationEvents": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/spockNinja/linter-scspell"

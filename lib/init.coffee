@@ -1,7 +1,11 @@
 module.exports =
-  configDefaults:
-    executableDir: null
-    overrideDictionary: null
+  config:
+    executableDir:
+        type: 'string'
+        default: ''
+    overrideDictionary:
+        type: 'string'
+        default: ''
 
   activate: ->
     console.log 'activate linter-scspell'
