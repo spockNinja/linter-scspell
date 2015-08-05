@@ -1,7 +1,13 @@
 {
   "name": "linter-scspell",
-  "linter-package": true,
-  "main": "./lib/init",
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "main": "./lib/main",
   "version": "1.2.0",
   "description": "Atom linter plugin for spell checking, using scspell",
   "repository": {
