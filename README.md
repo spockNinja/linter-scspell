@@ -24,13 +24,20 @@ Install plugin by typing:
 
 ### Settings
 You can configure linter-scspell as nearly all [Atom](https://atom.io/) modules by editing *~/.atom/config.cson* (click *Open Your Config*
-in *Atom* menu).
-In configuration you can specify executable directory if node hasn't it in **$PATH**. Example:
+in *Atom* menu) or updating the Settings for this package.
+You can specify an executable path if scspell is not installed at `/usr/local/bin`. Example:
 
+```
+'linter-scspell':
+  'executablePath': '/path/to/scspell'
+```
+
+You can also specify a path to a custom dictionary:
 ```
 'linter-scspell':
   'overrideDictionary': '/path/to/dictionary.txt'
 ```
+(Running `scspell --export-dictionary=FILE` will give you the default dictionary, which can then be tweaked to your liking.)
 
 ### Screenshot
 ![img](https://raw.githubusercontent.com/spockNinja/linter-scspell/master/screenshot.png)
