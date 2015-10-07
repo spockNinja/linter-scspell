@@ -25,6 +25,7 @@ module.exports =
 
   provideLinter: ->
     provider =
+      name: 'scspell'
       grammarScopes: ['*']
       scope: 'file'
       lintOnFly: false
