@@ -14,7 +14,7 @@ system.
 Install [scspell](https://pypi.python.org/pypi/scspell) by typing the following
 in a terminal:
    ```
-   pip install git+git://github.com/myint/scspell.git
+   pip install scspell3k
    ```
 
 Install plugin by typing:
