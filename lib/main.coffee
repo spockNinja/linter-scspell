@@ -67,15 +67,16 @@ module.exports =
 
         return new Promise (resolve, reject) =>
           lines = []
+          addLines = (data) ->
+              lines = lines.concat(data.split '\n')
+
           process = new BufferedProcess
             command: @executablePath
             args: parameters
 
-            stdout: (data) ->
-              lines = data.split '\n'
+            stdout: addLines
 
-            stderr: (data) ->
-              lines = data.split '\n'
+            stderr: addLines
 
             exit: (code) ->
               errors = []
