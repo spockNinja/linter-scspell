@@ -1,4 +1,5 @@
 {BufferedProcess, CompositeDisposable} = require 'atom'
+dependencyInstaller = require 'atom-package-deps'
 
 module.exports =
   config:
@@ -19,6 +20,8 @@ module.exports =
     @subscriptions.add atom.config.observe 'linter-scspell.overrideDictionary',
       (overrideDictionary) =>
         @overrideDictionary = overrideDictionary
+
+    dependencyInstaller.install 'linter-scspell'
 
   deactivate: ->
     @subscriptions.dispose()
